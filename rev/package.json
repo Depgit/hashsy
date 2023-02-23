@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon main"
+    "start": "nodemon main",
+    "test": "mocha test/*.js --exit --watch"
   },
   "keywords": [],
   "author": "",
@@ -16,8 +17,13 @@
     "express": "^4.18.2",
     "firebase": "^9.17.1",
     "firebase-admin": "^11.5.0",
+    "logger-line-number": "^1.0.5",
     "morgan": "^1.10.0",
-    "node-cron": "^3.0.2",
-    "winston": "^3.8.2"
+    "node-cron": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.2.0"
   }
 }

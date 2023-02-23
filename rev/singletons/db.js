@@ -1,7 +1,5 @@
 const admin = require('firebase-admin');
-const { userLogger } = require('./logger');
 const firebaseService = require('../config.json').firebaseService;
-const {info,error} = require('../thirdParty/log')
 
 let file = "[singletons/db.js]"
 
@@ -24,7 +22,7 @@ class Database {
     try {
       key = this.db.ref(path).push(data);
     } catch (err) {
-      error(file,err)
+      logger.log(file,err)
       Error = err
     }
     return [key, Error]
@@ -39,7 +37,7 @@ class Database {
         .once('value');
       key =  snapshot.val();
     } catch (err) {
-      error(file,err);
+      logger.log(file,err);
       Error = err;
     }
     return [key, Error]
@@ -50,7 +48,7 @@ class Database {
     try {
       key = await this.db.ref(path).update(data);
     } catch (err) {
-      error(file,err);
+      logger.log(file,err);
       Error = err;
     }
     return [key, Error]
@@ -61,7 +59,7 @@ class Database {
     try {
       key = this.db.ref(path).set(data);
     } catch (err) {
-      error(file,err)
+      logger.log(file,err)
       Error =  err
     }
     return [key,Error]
